@@ -1,4 +1,4 @@
-package com.scscloud.gateway;
+package com.scscloud.cloudgateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,9 +10,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableDiscoveryClient
 //允许该应用使用Feign组件
 @EnableFeignClients
-public class GatewayApplication {
+public class CloudGatewayApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(GatewayApplication.class, args);
+        SpringApplication.run(CloudGatewayApplication.class, args);
     }
 }

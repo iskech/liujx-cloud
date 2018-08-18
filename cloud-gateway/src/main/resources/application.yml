@@ -1,15 +1,15 @@
 spring:
   application:
-      name: cloud-gateway #Íø¹ØÃû
+      name: cloud-gateway #ç½‘å…³å
 server:
-  port: 9000 #Íø¹Ø¶Ë¿Ú
+  port: 9000 #ç½‘å…³ç«¯å£
 
 eureka:
     client:
         serviceUrl:
             defaultZone: http://localhost:8761/eureka/
 
-#ÇëÇóºÍÏìÓ¦GZIPÑ¹ËõÖ§³Ö
+#è¯·æ±‚å’Œå“åº”GZIPå‹ç¼©æ”¯æŒ
 feign:
   httpclient:
     enabled: false
@@ -35,24 +35,24 @@ feign:
       port: 5672
       username: guest
       password: guest
-#  springcloud gateway ÅäÖÃ
+#  springcloud gateway é…ç½®
   cloud:
     gateway:
       locator:
         enabled: true
       routes:
-      # ================Íø¹ØÂ·ÓÉ¹æÔò=====================
+      # ================ç½‘å…³è·¯ç”±è§„åˆ™=====================
       - id: cloud-gateway
-        uri: lb://liu #Â·ÓÉºóÖ´ĞĞµÄuri
-        order: 8000 #¸Ä×éÂ·ÓÉ¹æÔòË³Ğò
+        uri: lb://liu #è·¯ç”±åæ‰§è¡Œçš„uri
+        order: 8000 #æ”¹ç»„è·¯ç”±è§„åˆ™é¡ºåº
         predicates:
-        - Path=/api/**  #·ÃÎÊuri ¹æÔò ·ûºÏ¸Ã¹æÔò¶¼ÓÉ¸Ã×éÂ·ÓÉ¹æÔòÆ¥Åä
+        - Path=/api/**  #è®¿é—®uri è§„åˆ™ ç¬¦åˆè¯¥è§„åˆ™éƒ½ç”±è¯¥ç»„è·¯ç”±è§„åˆ™åŒ¹é…
         filters:
-        - StripPrefix=0 #¹ıÂËÇ°Ãæn=0¸öÂ·¾¶Ç°×º
+        - StripPrefix=0 #è¿‡æ»¤å‰é¢n=0ä¸ªè·¯å¾„å‰ç¼€
 gate:
   ignore:
-    startWith: /jwt  #ºöÂÔÒÔ/jwtÎªÇ°×ºµÄuri·ÃÎÊÇëÇó ¼´¸Ã·ÃÎÊ²»¼ÓÈëÂ·ÓÉ
+    startWith: /jwt  #å¿½ç•¥ä»¥/jwtä¸ºå‰ç¼€çš„uriè®¿é—®è¯·æ±‚ å³è¯¥è®¿é—®ä¸åŠ å…¥è·¯ç”±
 
 logging:
   level:
-    com.scscloud.gateway: debug #ÈÕÖ¾¼¶±ğ
+    com.scscloud.gateway: debug #æ—¥å¿—çº§åˆ«
