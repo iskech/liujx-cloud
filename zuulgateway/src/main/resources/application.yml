@@ -1,0 +1,51 @@
+spring:
+    application:
+        name: zuul-gate
+
+    jackson:
+        date-format: yyyy-MM-dd HH:mm:ss
+        time-zone: GMT+8
+        default-property-inclusion: non_null
+
+    rabbitmq:
+        host: localhost
+        port: 5672
+        username: guest
+        password: guest
+    sleuth:
+      enabled: true
+      http:
+        legacy:
+          enabled: true
+server:
+    port: 8766 #Æô¶¯¶Ë¿Ú
+
+
+eureka:
+    instance:
+        statusPageUrlPath: /actuator/info
+        healthCheckUrlPath: /actuator/health
+        home-page-url-path: /
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:8761/eureka/
+
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+
+
+
+
+
+gate:
+  ignore:
+    startWith: /static,/auth/jwt
+
+
+
