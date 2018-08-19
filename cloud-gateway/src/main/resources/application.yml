@@ -5,6 +5,10 @@ server:
   port: 9000 #网关端口
 
 eureka:
+    instance:
+        statusPageUrlPath: /actuator/info
+        healthCheckUrlPath: /actuator/health
+        home-page-url-path: /
     client:
         serviceUrl:
             defaultZone: http://localhost:8761/eureka/
@@ -12,7 +16,7 @@ eureka:
 #请求和响应GZIP压缩支持
 feign:
   httpclient:
-    enabled: false
+    enabled: true
   okhttp:
     enabled: true
   compression:
@@ -49,9 +53,14 @@ feign:
         - Path=/api/**  #访问uri 规则 符合该规则都由该组路由规则匹配
         filters:
         - StripPrefix=0 #过滤前面n=0个路径前缀
+        - name: Hystrix
+          args:
+            name: authHystrixCommand
+            fallbackUri: forward:/hystrixTimeout
 gate:
   ignore:
     startWith: /jwt  #忽略以/jwt为前缀的uri访问请求 即该访问不加入路由
+
 
 logging:
   level:
