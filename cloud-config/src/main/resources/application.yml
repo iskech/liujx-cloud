@@ -1,0 +1,29 @@
+spring:
+    application:
+        name: cloud-config
+    profiles:
+      active: native
+
+    jackson:
+        date-format: yyyy-MM-dd HH:mm:ss
+        time-zone: GMT+8
+        default-property-inclusion: non_null
+    cloud:
+      config:
+        server:
+          native:
+            search-locations: 
+
+
+server:
+    port: 5566 #Æô¶¯¶Ë¿Ú
+
+
+eureka:
+    instance:
+        statusPageUrlPath: /actuator/info
+        healthCheckUrlPath: /actuator/health
+        home-page-url-path: /
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:8761/eureka/
